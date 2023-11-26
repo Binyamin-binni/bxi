@@ -9,4 +9,5 @@ git clone https://github.com/binyamin-binni/bxi
 cd bxi
 
 chmod 777 bxi
+
 ./bxi
