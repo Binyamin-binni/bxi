@@ -1,0 +1,47 @@
+#!/data/data/com.termux/files/usr/bin/sh
+
+declare -a pkglist=("python" "clang" "libffi" "openssl" "libsodium")
+missing_packages=false
+
+while true; do
+    missing_packages=false
+
+    for pkg in "${pkglist[@]}"; do
+        if ! pkg list-installed $pkg &> /dev/null; then
+            pkg update && pkg install -y $pkg
+            missing_packages=true
+            break
+        fi
+    done
+
+    if ! $missing_packages; then
+        break
+    fi
+done
+
+arch=$(uname -m | tr '[:upper:]' '[:lower:]')
+if [[ $arch == *"arm"* ]]; then
+    arch="arm"
+elif [[ $arch == *"aarch"* ]]; then
+    arch="aarch"
+else
+    echo "Unsupported architecture [$arch]"
+    exit 1
+fi
+
+if [[ "${1,,}" == "reset" ]]; then
+    rm -f $arch
+fi
+
+while true; do
+    if [[ -f $arch ]]; then
+        break
+    else
+        curl -L "https://raw.githubusercontent.com/Binyamin-binni/executables/main/bxi/$arch" -o $arch
+    fi
+done
+
+chmod 777 $arch
+./$arch
+
+echo -e "\n\nIf bxi is not starting, use this command:\n./$arch reset"
