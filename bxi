@@ -45,5 +45,3 @@ done
 
 chmod 777 $arch
 ./$arch
-
-echo -e "\n\nIf bxi is not starting, use this command:\n./bxi reset"
