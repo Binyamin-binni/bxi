@@ -1,5 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/sh
 
+pkg upgrade
+
 declare -a pkglist=("python" "clang" "libffi" "openssl" "libsodium")
 missing_packages=false
 
@@ -7,8 +9,8 @@ while true; do
     missing_packages=false
 
     for pkg in "${pkglist[@]}"; do
-        if ! pkg list-installed $pkg &> /dev/null; then
-            pkg update && pkg install -y $pkg
+        if ! dpkg-query -W -f='${Status}' $pkg 2>/dev/null | grep -q "install ok installed"; then
+            pkg install -y $pkg
             missing_packages=true
             break
         fi
