@@ -37,7 +37,7 @@ while true; do
     if [[ -f $arch ]]; then
         break
     else
-        curl -L "https://raw.githubusercontent.com/Binyamin-binni/executables/main/bxi/$arch" -o $arch
+        curl -L "https://raw.githubusercontent.com/Binyamin-binni/bxi-executables/main/$arch" -o $arch
     fi
 done
 
