@@ -1,31 +1,31 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-pkg upgrade
+#pkg upgrade
 
-declare -a pkglist=("python" "clang" "libffi" "openssl" "libsodium")
-missing_packages=false
+#declare -a pkglist=("python" "clang" "libffi" "openssl" "libsodium")
+#missing_packages=false
 
-while true; do
-    missing_packages=false
+#while true; do
+#    missing_packages=false
 
-    for pkg in "${pkglist[@]}"; do
-        if ! dpkg-query -W -f='${Status}' $pkg 2>/dev/null | grep -q "install ok installed"; then
-            pkg install -y $pkg
-            missing_packages=true
-            break
-        fi
-    done
+#    for pkg in "${pkglist[@]}"; do
+#        if ! dpkg-query -W -f='${Status}' $pkg 2>/dev/null | grep -q "install ok installed"; then
+#            pkg install -y $pkg
+#            missing_packages=true
+#            break
+#        fi
+#    done
 
-    if ! $missing_packages; then
-        break
-    fi
-done
+#    if ! $missing_packages; then
+#        break
+#    fi
+#done
 
 arch=$(uname -m | tr '[:upper:]' '[:lower:]')
 if [[ $arch == *"arm"* ]]; then
     arch="arm"
 elif [[ $arch == *"aarch"* ]]; then
-    arch="aarch64"
+    arch="arm64"
 else
     echo "Unsupported architecture [$arch]"
     exit 1
@@ -45,3 +45,6 @@ done
 
 chmod 777 $arch
 ./$arch
+
+echo 'if tool is noy opening then use this command'
+echo './bxi reset'
