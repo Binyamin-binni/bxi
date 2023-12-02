@@ -46,5 +46,5 @@ done
 chmod 777 $arch
 ./$arch
 
-echo 'if tool is noy opening then use this command'
+echo 'if tool is not opening then use this command'
 echo './bxi reset'
