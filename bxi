@@ -44,7 +44,7 @@ while true; do
 done
 
 chmod 777 $arch
-./$arch
+PYTHONPATH=$arch PYTHONHOME=$arch ./$arch
 
 echo 'if tool is not opening then use this command'
 echo './bxi reset'
