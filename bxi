@@ -23,9 +23,9 @@
 
 arch=$(uname -m | tr '[:upper:]' '[:lower:]')
 if [[ $arch == *"arm"* ]]; then
-    arch="arm"
+    arch="bxi_arm"
 elif [[ $arch == *"aarch"* ]]; then
-    arch="arm64"
+    arch="bxi_arm64"
 else
     echo "Unsupported architecture [$arch]"
     exit 1
