@@ -44,7 +44,7 @@ while true; do
 done
 
 chmod 777 $arch
-PYTHONPATH=$arch PYTHONHOME=$arch ./$arch
+./$arch
 
 echo '\nif tool is not opening then use this command'
 echo './bxi reset'
