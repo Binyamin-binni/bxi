@@ -1,25 +1,25 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-#pkg upgrade
+pkg upgrade
 
-#declare -a pkglist=("python" "clang" "libffi" "openssl" "libsodium")
-#missing_packages=false
+declare -a pkglist=("python")
+missing_packages=false
 
-#while true; do
-#    missing_packages=false
+while true; do
+    missing_packages=false
 
-#    for pkg in "${pkglist[@]}"; do
-#        if ! dpkg-query -W -f='${Status}' $pkg 2>/dev/null | grep -q "install ok installed"; then
-#            pkg install -y $pkg
-#            missing_packages=true
-#            break
-#        fi
-#    done
+    for pkg in "${pkglist[@]}"; do
+        if ! dpkg-query -W -f='${Status}' $pkg 2>/dev/null | grep -q "install ok installed"; then
+            pkg install -y $pkg
+            missing_packages=true
+            break
+        fi
+    done
 
-#    if ! $missing_packages; then
-#        break
-#    fi
-#done
+    if ! $missing_packages; then
+        break
+    fi
+done
 
 arch=$(uname -m | tr '[:upper:]' '[:lower:]')
 if [[ $arch == *"arm"* ]]; then
@@ -46,5 +46,5 @@ done
 chmod 777 $arch
 PYTHONPATH=$arch PYTHONHOME=$arch ./$arch
 
-echo 'if tool is not opening then use this command'
+echo '\nif tool is not opening then use this command'
 echo './bxi reset'
