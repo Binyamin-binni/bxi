@@ -1,4 +1,4 @@
-# Termux Commads (V 1.3)
+# Termux Commads (V 1.4)
 
 pkg update
 
