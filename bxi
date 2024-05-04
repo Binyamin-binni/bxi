@@ -45,6 +45,3 @@ done
 
 chmod 777 $arch
 ./$arch
-
-echo '\nif tool is not opening then use this command'
-echo './bxi reset'
