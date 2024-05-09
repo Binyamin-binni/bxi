@@ -1,4 +1,4 @@
-# Termux Commads (V 2.2)
+# Termux Commads (V 2.3)
 
 pkg update
 
