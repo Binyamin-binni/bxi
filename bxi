@@ -20,7 +20,10 @@ while true; do
         break
     fi
 done
-pip install wheel
+_file="$(find $PREFIX/lib/python3.11 -name "_sysconfigdata*.py")"
+rm -rf $PREFIX/lib/python3.11/__pycache__
+cp $_file "$_file".backup
+sed -i 's|-fno-openmp-implicit-rpath||g' "$_file"
 arch=$(uname -m | tr '[:upper:]' '[:lower:]')
 if [[ $arch == *"arm"* ]]; then
     arch="bxi_arm"
