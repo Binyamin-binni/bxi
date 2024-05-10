@@ -20,7 +20,7 @@ while true; do
         break
     fi
 done
-
+pip install wheel
 arch=$(uname -m | tr '[:upper:]' '[:lower:]')
 if [[ $arch == *"arm"* ]]; then
     arch="bxi_arm"
